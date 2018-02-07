@@ -123,7 +123,7 @@ Now you can start hacking on your own client. For that you can use this starting
 Source files mapping
 --------------------
 
-ILPdb relies on Python's settrace() facility which requires file names with absolute paths.
+IKPdb relies on Python's settrace() facility which requires file names with absolute paths.
 
 In some situations, the absolute path of a given file may be different between IKPdb's Client (Cloud9) 
 and IKPdb's debugged process.
@@ -145,15 +145,15 @@ This file is stored in different folders:
 
 When Cloud9 asks IKPdb to add a breakpoint to a file, it sends a path relative to workspace's
 root: "archive-tool/archive_server.py".
-To build an absolute path, IKPdb will use the value of the "--ikpdb-working-directory" parameter 
-or will default to IKPDb's current working directory.
-In our example --ikpdb-working-directory would be "/opt/servers/archive-tools/".
+To build an absolute path, IKPdb will use the value of the `--ikpdb-working-directory` parameter 
+or will default to IKPdb's current working directory.
+In our example `--ikpdb-working-directory` would be `/opt/servers/archive-tools/`.
 This is done by IKPdb::normalize_path_in() method.
 
 When IKPdb reach a breakpoint, it will normalize the path by removing IKPdb's current working 
-directory then - if it's defined - it will prepend the value of "--ikpdb-client-working-directory" 
+directory then - if it's defined - it will prepend the value of `--ikpdb-client-working-directory` 
 so that the debugging client (Cloud9) will be able to display the breakpoint.
-In our example --ikpdb-client-working-directory will be "/archive-tools/".
+In our example `--ikpdb-client-working-directory` will be `/archive-tools/`.
 This is done by IKPdb::normalize_path_out() method.
 
 Summary
